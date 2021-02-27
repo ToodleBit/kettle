@@ -1,18 +1,18 @@
 {
     "name": "ToodleBit",
     "version": "0.0.10",
-    "description": "Code blocks for the traffic lights unit",
+    "description": "Code blocks for the kettle algorithms lesson",
     "license": "MIT",
     "dependencies": {
         "core": "*"
     },
     "files": [
         "README.md",
-        "toodlebit-lights.ts"
+        "toodlebit-kettle.ts"
     ],
     "testFiles": [
         "tests.ts"
     ],
     "public": true,
-    "installedVersion": "https://github.com/ToodleBit/lights.git#v0.0.10"
+    "installedVersion": "https://github.com/ToodleBit/kettle.git#v0.0.10"
 }
