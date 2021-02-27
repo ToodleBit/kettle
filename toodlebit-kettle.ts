@@ -86,9 +86,10 @@ namespace Kettle {
 
 function RunHeater(){
 	while (heatercondition == true) {
+		
     watertemp += 1
     
-    if (watertemp == 50){
+    if (watertemp == 51){
        led.plot(0, 4) 
        led.plot(1, 4) 
        led.plot(2, 4) 
