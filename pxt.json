@@ -1,0 +1,18 @@
+{
+    "name": "ToodleBit",
+    "version": "0.0.10",
+    "description": "Code blocks for the traffic lights unit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "toodlebit-lights.ts"
+    ],
+    "testFiles": [
+        "tests.ts"
+    ],
+    "public": true,
+    "installedVersion": "https://github.com/ToodleBit/lights.git#v0.0.10"
+}
