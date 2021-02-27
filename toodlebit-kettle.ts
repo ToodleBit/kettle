@@ -130,7 +130,7 @@ function RunHeater(){
         basic.showIcon(IconNames.Chessboard)
         
           }
-          basic.pause(500)
+          basic.pause(200)
     }
     basic.clearScreen()
     watertemp = 0
