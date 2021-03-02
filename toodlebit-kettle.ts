@@ -74,7 +74,7 @@ enum NeoPixelMode {
  * Functions to operate NeoPixel strips.
  */
 //% color=#008C8C weight=10 icon="\uf0eb"
-namespace kettle {
+namespace neopixel {
     /**
      * A NeoPixel lights
      */
