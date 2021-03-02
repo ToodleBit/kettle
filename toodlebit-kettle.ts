@@ -347,23 +347,23 @@ namespace neopixel {
         }
     }
 
+
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
-     * @param pin the pin where the neopixel is connected.
-     * @param numleds number of leds in the lights, eg: 24,30,60,64
+     * @param pin the pin where the KettleLights is connected.
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+    //% blockId="neopixel_create" block="pin %pin"
     //% weight=90 blockGap=8
-    //% parts="neopixel"
+    //% parts="KettleLights"
     //% trackArgs=0,2
     //% blockSetVariable=lights
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Lights {
+    export function create(pin: DigitalPin): Lights {
         let lights = new Lights();
-        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
-        lights.buf = pins.createBuffer(numleds * stride);
+        let stride = NeoPixelMode.RGBW ? 4 : 3;
+        lights.buf = pins.createBuffer(6 * stride);
         lights.start = 0;
-        lights._length = numleds;
-        lights._mode = mode || NeoPixelMode.RGB;
+        lights._length = 6;
+        lights._mode = NeoPixelMode.RGB;
         lights._matrixWidth = 0;
         lights.setBrightness(128)
         lights.setPin(pin)
