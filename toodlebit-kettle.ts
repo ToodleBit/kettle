@@ -1,3 +1,4 @@
+
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
@@ -74,7 +75,7 @@ enum NeoPixelMode {
  * Functions to operate NeoPixel strips.
  */
 //% color=#008C8C weight=10 icon="\uf0eb"
-namespace neopixel {
+namespace kettle {
     /**
      * A NeoPixel lights
      */
@@ -95,7 +96,7 @@ namespace neopixel {
         //% blockId="neopixel_set_strip_color" block="%lights|show color %rgb=neopixel_colors"
         //% lights.defl=lights
         //% weight=85 blockGap=8
-        //% parts="neopixel"
+        //% parts="kettle"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -110,7 +111,7 @@ namespace neopixel {
         //% blockId="neopixel_clear" block="%lights|clear"
         //% lights.defl=lights
         //% weight=76
-        //% parts="neopixel"
+        //% parts="kettle"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -125,7 +126,7 @@ namespace neopixel {
         //% blockId="neopixel_set_brightness" block="%lights|set brightness %brightness" blockGap=8
         //% lights.defl=lights
         //% weight=59
-        //% parts="neopixel"
+        //% parts="kettle"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -135,7 +136,7 @@ namespace neopixel {
          * Set the pin where the neopixel is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="neopixel"
+        //% parts="kettle"
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
