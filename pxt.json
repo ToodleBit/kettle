@@ -14,6 +14,19 @@
     "testFiles": [
         "tests.ts"
     ],
-    "public": true,
-    "installedVersion": "https://github.com/ToodleBit/kettle.git#v0.0.10"
+   "public": true,
+	"installedVersion": "https://github.com/ToodleBit/kettle.git#v0.0.10",
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "enabled": 0
+                }
+            }
+        }
+    }
 }
