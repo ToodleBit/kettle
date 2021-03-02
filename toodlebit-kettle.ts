@@ -1,3 +1,4 @@
+
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
@@ -197,7 +198,7 @@ function RunHeater(){
         //% blockId="neopixel_set_strip_color" block="%lights|show color %rgb=neopixel_colors"
         //% lights.defl=lights
         //% weight=85 blockGap=8
-        //% parts="neopixel"
+        //% parts="kettle"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -212,7 +213,7 @@ function RunHeater(){
         //% blockId="neopixel_show" block="%lights|show" blockGap=8
         //% lights.defl=lights
         //% weight=79
-        //% parts="neopixel"
+        //% parts="kettle"
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
@@ -226,7 +227,7 @@ function RunHeater(){
         //% blockId="neopixel_clear" block="%lights|clear"
         //% lights.defl=lights
         //% weight=76
-        //% parts="neopixel"
+        //% parts="kettle"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -241,17 +242,17 @@ function RunHeater(){
         //% blockId="neopixel_set_brightness" block="%lights|set brightness %brightness" blockGap=8
         //% lights.defl=lights
         //% weight=59
-        //% parts="neopixel"
+        //% parts="kettle"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
 
 
         /**
-         * Set the pin where the neopixel is connected, defaults to P0.
+         * Set the pin where the kettle is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="neopixel"
+        //% parts="kettle"
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -349,7 +350,7 @@ function RunHeater(){
      */
     //% blockId="neopixel_create" block="pin %pin"
     //% weight=90 blockGap=8
-    //% parts="KettleLights"
+    //% parts="kettle"
     //% trackArgs=0,2
     //% blockSetVariable=lights
     export function create(pin: DigitalPin): Lights {
