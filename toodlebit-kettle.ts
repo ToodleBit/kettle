@@ -181,7 +181,7 @@ function RunHeater(){
  * Functions to operate NeoPixel strips.
  */
 //% weight=5 color=#2699BF icon="\uf110"
-namespace KettleLights {
+namespace neopixel {
     /**
      * A NeoPixel lights
      */
@@ -202,13 +202,27 @@ namespace KettleLights {
         //% blockId="neopixel_set_strip_color" block="%lights|show color %rgb=neopixel_colors"
         //% lights.defl=lights
         //% weight=85 blockGap=8
-        //% parts="KettleLights"
+        //% parts="neopixel"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
-            ws2812b.sendBuffer(this.buf, this.pin);
+            this.show();
         }
 
+
+
+        /**
+         * Send all the changes to the lights.
+         */
+        //% blockId="neopixel_show" block="%lights|show" blockGap=8
+        //% lights.defl=lights
+        //% weight=79
+        //% parts="neopixel"
+        show() {
+            // only supported in beta
+            // ws2812b.setBufferMode(this.pin, this._mode);
+            ws2812b.sendBuffer(this.buf, this.pin);
+        }
 
         /**
          * Turn off all LEDs.
@@ -217,32 +231,32 @@ namespace KettleLights {
         //% blockId="neopixel_clear" block="%lights|clear"
         //% lights.defl=lights
         //% weight=76
-        //% parts="KettleLights"
+        //% parts="neopixel"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
         }
 
-         /**
+ 
+
+        /**
          * Set the brightness of the lights. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" 
+        //% blockId="neopixel_set_brightness" block="%lights|set brightness %brightness" blockGap=8
         //% lights.defl=lights
         //% weight=59
-        //% parts="KettleLights"
+        //% parts="neopixel"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
 
 
-
-
         /**
-         * Set the pin where the KettleLights is connected, defaults to P0.
+         * Set the pin where the neopixel is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="KettleLights"
+        //% parts="neopixel"
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -335,27 +349,38 @@ namespace KettleLights {
 
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
-     * @param pin the pin where the KettleLights is connected.
+     * @param pin the pin where the neopixel is connected.
+     * @param numleds number of leds in the lights, eg: 24,30,60,64
      */
-    //% blockId="neopixel_create" block="pin %pin"
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
     //% weight=90 blockGap=8
-    //% parts="KettleLights"
+    //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=lights
-    export function create(pin: DigitalPin): Lights {
+    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Lights {
         let lights = new Lights();
-        let stride = NeoPixelMode.RGBW ? 4 : 3;
-        lights.buf = pins.createBuffer(6 * stride);
+        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
+        lights.buf = pins.createBuffer(numleds * stride);
         lights.start = 0;
-        lights._length = 6;
-        lights._mode = NeoPixelMode.RGB;
+        lights._length = numleds;
+        lights._mode = mode || NeoPixelMode.RGB;
         lights._matrixWidth = 0;
         lights.setBrightness(128)
         lights.setPin(pin)
         return lights;
     }
 
-
+    /**
+     * Converts red, green, blue channels into a RGB color
+     * @param red value of the red channel between 0 and 255. eg: 255
+     * @param green value of the green channel between 0 and 255. eg: 255
+     * @param blue value of the blue channel between 0 and 255. eg: 255
+     */
+    //% weight=1
+    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    export function rgb(red: number, green: number, blue: number): number {
+        return packRGB(red, green, blue);
+    }
 
     /**
      * Gets the RGB value of a known color
