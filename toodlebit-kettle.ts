@@ -1,4 +1,3 @@
-
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
