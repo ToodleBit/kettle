@@ -1,4 +1,3 @@
-
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
@@ -93,7 +92,7 @@ namespace kettle {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_strip_color" block="%lights|show color %rgb=neopixel_colors"
+        //% blockId="kettle_set_strip_color" block="%lights|show color %rgb=kettle_colors"
         //% lights.defl=lights
         //% weight=85 blockGap=8
         //% parts="kettle"
@@ -108,7 +107,7 @@ namespace kettle {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="neopixel_clear" block="%lights|clear"
+        //% blockId="kettle_clear" block="%lights|clear"
         //% lights.defl=lights
         //% weight=76
         //% parts="kettle"
@@ -123,7 +122,7 @@ namespace kettle {
          * Set the brightness of the lights. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="neopixel_set_brightness" block="%lights|set brightness %brightness" blockGap=8
+        //% blockId="kettle_set_brightness" block="%lights|set brightness %brightness" blockGap=8
         //% lights.defl=lights
         //% weight=59
         //% parts="kettle"
@@ -232,7 +231,7 @@ namespace kettle {
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the KettleLights is connected.
      */
-    //% blockId="neopixel_create" block="pin %pin"
+    //% blockId="kettle_create" block="pin %pin"
     //% weight=90 blockGap=8
     //% parts="KettleLights"
     //% trackArgs=0,2
@@ -257,7 +256,7 @@ namespace kettle {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=1
-    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% blockId="kettle_rgb" block="red %red|green %green|blue %blue"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -266,7 +265,7 @@ namespace kettle {
      * Gets the RGB value of a known color
     */
     //% weight=2 blockGap=8
-    //% blockId="neopixel_colors" block="%color"
+    //% blockId="kettle_colors" block="%color"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
