@@ -1,4 +1,3 @@
-
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
@@ -93,10 +92,10 @@ namespace neopixel {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED
          */
-        //% blockId="kettle_set_strip_color" block="%lights|show color %rgb=kettle_colors"
+        //% blockId="neopixel_set_strip_color" block="%lights|show color %rgb=neopixel_colors"
         //% lights.defl=lights
         //% weight=85 blockGap=8
-        //% parts="kettle"
+        //% parts="neopixel"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -108,10 +107,10 @@ namespace neopixel {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="kettle_clear" block="%lights|clear"
+        //% blockId="neopixel_clear" block="%lights|clear"
         //% lights.defl=lights
         //% weight=76
-        //% parts="kettle"
+        //% parts="neopixel"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -123,10 +122,10 @@ namespace neopixel {
          * Set the brightness of the lights. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="kettle_set_brightness" block="%lights|set brightness %brightness" blockGap=8
+        //% blockId="neopixel_set_brightness" block="%lights|set brightness %brightness" blockGap=8
         //% lights.defl=lights
         //% weight=59
-        //% parts="kettle"
+        //% parts="neopixel"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -136,7 +135,7 @@ namespace neopixel {
          * Set the pin where the neopixel is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="kettle"
+        //% parts="neopixel"
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -232,7 +231,7 @@ namespace neopixel {
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the KettleLights is connected.
      */
-    //% blockId="kettle_create" block="pin %pin"
+    //% blockId="neopixel_create" block="pin %pin"
     //% weight=90 blockGap=8
     //% parts="KettleLights"
     //% trackArgs=0,2
@@ -257,7 +256,7 @@ namespace neopixel {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=1
-    //% blockId="kettle_rgb" block="red %red|green %green|blue %blue"
+    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -266,7 +265,7 @@ namespace neopixel {
      * Gets the RGB value of a known color
     */
     //% weight=2 blockGap=8
-    //% blockId="kettle_colors" block="%color"
+    //% blockId="neopixel_colors" block="%color"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
