@@ -264,9 +264,9 @@ namespace neopixel {
     export function create(pin: DigitalPin): Lights {
         let lights = new Lights();
         let stride = NeoPixelMode.RGBW ? 4 : 3;
-        lights.buf = pins.createBuffer(6 * stride);
+        lights.buf = pins.createBuffer(20 * stride);
         lights.start = 0;
-        lights._length = 6;
+        lights._length = 20;
         lights._mode = NeoPixelMode.RGB;
         lights._matrixWidth = 0;
         lights.setBrightness(128)
