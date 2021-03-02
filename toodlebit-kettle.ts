@@ -1,5 +1,3 @@
-
-
 let heatercondition = false
 let watertemp = 50
 let setpin = DigitalPin.P0
@@ -172,16 +170,13 @@ function RunHeater(){
 
 		}
 	
-}
+
 
 	
 	
 	
-/**
- * Functions to operate NeoPixel strips.
- */
-//% weight=5 color=#2699BF icon="\uf110"
-namespace neopixel {
+	
+	
     /**
      * A NeoPixel lights
      */
