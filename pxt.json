@@ -1,7 +1,7 @@
 {
     "name": "ToodleBit",
     "version": "0.0.10",
-    "description": "Code blocks for the kettle algorithms lesson",
+    "description": "Code blocks for the kettle algorithm lesson",
     "license": "MIT",
     "dependencies": {
         "core": "*",
