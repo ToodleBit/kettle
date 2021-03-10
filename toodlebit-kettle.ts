@@ -1,7 +1,3 @@
-enum MyPins {
-	//% block=P0
-	P0 = DigitalPin.P0
-}
 /**
  * Well known colors for a NeoPixel KettleLight
  */
@@ -84,7 +80,7 @@ namespace neopixel {
 showColor(rgb: MyNeoPixelColors) {
       rgb = rgb >> 0;
         this.setAllRGB(rgb);
-        ws2812b.sendBuffer(this.buf, DigitalPin.P0);
+        ws2812b.sendBuffer(this.buf, this.pin);
     }
 
         /**
@@ -165,7 +161,7 @@ showColor(rgb: MyNeoPixelColors) {
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=KettleLight
-    export function create(pin: MyPins): Light {
+    export function create(pin: DigitalPin): Light {
         let KettleLight = new Light();
         let stride =  NeoPixelMode.RGBW ? 4 : 3;
         KettleLight.buf = pins.createBuffer(20 * stride);
@@ -174,7 +170,7 @@ showColor(rgb: MyNeoPixelColors) {
         KettleLight._mode = NeoPixelMode.RGB;
         KettleLight._matrixWidth = 0;
         KettleLight.setBrightness(128)
-        KettleLight.setPin(DigitalPin.P0)
+        KettleLight.setPin(pin)
         return KettleLight;
     }
 
@@ -244,7 +240,7 @@ namespace kettle {
     //% trackArgs=0,2
     //% blockSetVariable=kettle_lights
     export function connectLights(){
-let KettleLight = neopixel.create(1)
+let KettleLight = neopixel.create(DigitalPin.P0);
 
     }   
         
@@ -258,7 +254,7 @@ let KettleLight = neopixel.create(1)
 export function showColor(rgb: MyNeoPixelColors) {
       rgb = rgb >> 0;
         setAllRGB(rgb);
-      ws2812b.sendBuffer(buf, DigitalPin.P0);
+      ws2812b.sendBuffer(buf, pin);
     }
 
  /**
