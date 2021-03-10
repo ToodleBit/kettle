@@ -145,7 +145,8 @@ showColor(rgb: MyNeoPixelColors) {
                 green = (green * br) >> 8;
                 blue = (blue * br) >> 8;
             }
-            const end = this.start + this._length;
+           // const end = this.start + this._length;
+	         const end = 24;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             for (let i = this.start; i < end; ++i) {
                 this.setBufferRGB(i * stride, red, green, blue)
