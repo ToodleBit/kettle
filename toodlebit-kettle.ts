@@ -1,4 +1,3 @@
-
 /**
  * Well known colors for a NeoPixel KettleLight
  */
@@ -147,7 +146,7 @@ showColor(rgb: MyNeoPixelColors) {
                 blue = (blue * br) >> 8;
             }
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
-            for (let i = 0; i < 20; ++i) {
+            for (let i = 0; i < 24; ++i) {
                 this.setBufferRGB(i * stride, red, green, blue)
             }
         }
