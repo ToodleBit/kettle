@@ -1,3 +1,7 @@
+enum MyPins {
+	//% block=P0
+	P0 = DigitalPin.P0
+}
 /**
  * Well known colors for a NeoPixel KettleLight
  */
@@ -161,7 +165,7 @@ showColor(rgb: MyNeoPixelColors) {
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=KettleLight
-    export function create(pin: DigitalPin): Light {
+    export function create(pin: MyPins): Light {
         let KettleLight = new Light();
         let stride =  NeoPixelMode.RGBW ? 4 : 3;
         KettleLight.buf = pins.createBuffer(20 * stride);
