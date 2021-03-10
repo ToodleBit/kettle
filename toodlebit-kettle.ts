@@ -12,12 +12,12 @@ enum NeoPixelColors {
     Green = 0x00FF00,
     //% block=blue
     Blue = 0x0000FF,
-    //% block=indigo
-    Indigo = 0x4b0082,
+    //% block=purple
+    Purple = 0x4b0082,
     //% block=violet
     Violet = 0x8a2be2,
-    //% block=purple
-    Purple = 0xFF00FF,
+    //% block=pink
+    Pink = 0xFF00FF,
     //% block=white
     White = 0xFFFFFF,
     //% block=black
@@ -31,12 +31,12 @@ enum MyNeoPixelColors {
     Green = 65280,
     //% block=blue
     Blue = 255,
-    //% block=purple
-    Purple= 16711935,
+    //% block=pink
+    Pink = 16711935,
     //% block=violet
     Violet = 9055202,
-    //% block=indigo
-    Indigo=4915330,
+    //% block=purple
+    Purple =4915330,
     //% block=yellow
     Yellow=16776960
 }
