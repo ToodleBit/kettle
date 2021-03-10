@@ -1,3 +1,4 @@
+
 /**
  * Well known colors for a NeoPixel KettleLight
  */
@@ -93,7 +94,7 @@ showColor(rgb: MyNeoPixelColors) {
         //% parts="neopixel"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
-            this.buf.fill(0, this.start * stride, this._length * stride);
+            this.buf.fill(0, 0 * stride, 20 * stride);
 			ws2812b.sendBuffer(this.buf, this.pin);
         }
 
@@ -145,10 +146,8 @@ showColor(rgb: MyNeoPixelColors) {
                 green = (green * br) >> 8;
                 blue = (blue * br) >> 8;
             }
-           // const end = this.start + this._length;
-	         const end = 24;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
-            for (let i = this.start; i < end; ++i) {
+            for (let i = 0; i < 20; ++i) {
                 this.setBufferRGB(i * stride, red, green, blue)
             }
         }
@@ -167,9 +166,9 @@ showColor(rgb: MyNeoPixelColors) {
     export function create(pin: DigitalPin): Light {
         let KettleLight = new Light();
         let stride =  NeoPixelMode.RGBW ? 4 : 3;
-        KettleLight.buf = pins.createBuffer(24 * stride);
+        KettleLight.buf = pins.createBuffer(20 * stride);
         KettleLight.start = 0;
-        KettleLight._length = 24;
+        KettleLight._length = 20;
         KettleLight._mode = NeoPixelMode.RGB;
         KettleLight._matrixWidth = 0;
         KettleLight.setBrightness(128)
@@ -289,7 +288,7 @@ function setAllRGB(rgb: number) {
                 blue = (blue * br) >> 8;
             }
             const stride = NeoPixelMode.RGBW ? 4 : 3;
-            for (let i = 0; i < 24; ++i) {
+            for (let i = 0; i < 20; ++i) {
                 setBufferRGB(i * stride, red, green, blue)
     }
 			}
