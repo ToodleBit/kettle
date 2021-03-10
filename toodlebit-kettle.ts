@@ -53,7 +53,7 @@ enum NeoPixelMode {
     RGB_RGB = 3
 }
   let buf: Buffer;
-let pin: DigitalPin
+let mypin: DigitalPin;
 /**
  * Functions to operate NeoPixel strips.
  */
@@ -64,7 +64,7 @@ namespace neopixel {
      */
     export class Light {
         buf: Buffer;
-     
+		pin: DigitalPin;
         // TODO: encode as bytes instead of 32bit
         brightness: number;
         start: number; // start offset in LED KettleLight
@@ -81,7 +81,7 @@ namespace neopixel {
 showColor(rgb: MyNeoPixelColors) {
       rgb = rgb >> 0;
         this.setAllRGB(rgb);
-        ws2812b.sendBuffer(this.buf, pin);
+        ws2812b.sendBuffer(this.buf, this.pin);
     }
 
         /**
@@ -94,7 +94,7 @@ showColor(rgb: MyNeoPixelColors) {
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
-			ws2812b.sendBuffer(this.buf, pin);
+			ws2812b.sendBuffer(this.buf, this.pin);
         }
 
 
@@ -117,8 +117,9 @@ showColor(rgb: MyNeoPixelColors) {
         //% weight=10
         //% parts="neopixel"
         setPin(pin: DigitalPin): void {
-            pin = pin;
-            pins.digitalWritePin(pin, 0);
+			this.pin = pin;
+            pins.digitalWritePin(this.pin, 0);
+			mypin = pin;
             // don't yield to avoid races on initialization
         }
 
@@ -254,7 +255,7 @@ let KettleLight = neopixel.create(DigitalPin.P0);
 export function showColor(rgb: MyNeoPixelColors) {
       rgb = rgb >> 0;
         setAllRGB(rgb);
-      ws2812b.sendBuffer(buf, pin);
+      ws2812b.sendBuffer(buf, mypin);
     }
 
  /**
