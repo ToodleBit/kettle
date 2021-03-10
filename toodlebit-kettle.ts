@@ -73,7 +73,7 @@ namespace neopixel {
 
 
 //% blockId="neopixel_set_strip_color_kettle" 
-//% block="%KettleLight|show color %rgb"
+//% block="%KettleLight|show colour %rgb"
 //% KettleLight.defl=KettleLight
 //% weight=85 blockGap=8
 //% parts="neopixel"
@@ -170,7 +170,7 @@ showColor(rgb: MyNeoPixelColors) {
         KettleLight._mode = NeoPixelMode.RGB;
         KettleLight._matrixWidth = 0;
         KettleLight.setBrightness(128)
-        KettleLight.setPin(pin)
+        KettleLight.setPin(DigitalPin.P0)
         return KettleLight;
     }
 
@@ -247,7 +247,7 @@ let KettleLight = neopixel.create(DigitalPin.P0)
 
     
 //% blockId="neopixel_set_strip_color_kettle" 
-//% block="%KettleLight|show color %rgb"
+//% block="%KettleLight|show colour %rgb"
 //% KettleLight.defl=KettleLight
 //% weight=85 blockGap=8
 //% parts="neopixel"
