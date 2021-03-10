@@ -245,7 +245,7 @@ namespace kettle {
     //% trackArgs=0,2
     //% blockSetVariable=kettle_lights
     export function connectLights(){
-let KettleLight = neopixel.create(DigitalPin.P0)
+let KettleLight = neopixel.create(P0)
 
     }   
         
