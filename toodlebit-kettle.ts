@@ -52,7 +52,8 @@ enum NeoPixelMode {
     //% block="RGB (RGB format)"
     RGB_RGB = 3
 }
-
+  let buf: Buffer;
+let pin: DigitalPin
 /**
  * Functions to operate NeoPixel strips.
  */
@@ -63,7 +64,7 @@ namespace neopixel {
      */
     export class Light {
         buf: Buffer;
-        pin: DigitalPin;
+     
         // TODO: encode as bytes instead of 32bit
         brightness: number;
         start: number; // start offset in LED KettleLight
@@ -80,7 +81,7 @@ namespace neopixel {
 showColor(rgb: MyNeoPixelColors) {
       rgb = rgb >> 0;
         this.setAllRGB(rgb);
-        ws2812b.sendBuffer(this.buf, this.pin);
+        ws2812b.sendBuffer(this.buf, pin);
     }
 
         /**
@@ -93,7 +94,7 @@ showColor(rgb: MyNeoPixelColors) {
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
-			ws2812b.sendBuffer(this.buf, this.pin);
+			ws2812b.sendBuffer(this.buf, pin);
         }
 
 
@@ -116,8 +117,8 @@ showColor(rgb: MyNeoPixelColors) {
         //% weight=10
         //% parts="neopixel"
         setPin(pin: DigitalPin): void {
-            this.pin = pin;
-            pins.digitalWritePin(this.pin, 0);
+            pin = pin;
+            pins.digitalWritePin(pin, 0);
             // don't yield to avoid races on initialization
         }
 
@@ -230,7 +231,6 @@ enum MyHeating {
 //% color=#5C2D91 weight=40 icon="\uf0f4"
 namespace kettle {
 
-    let buf: Buffer;
     let heatercondition = false
     let watertemp = 50
 
