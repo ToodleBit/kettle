@@ -1,4 +1,3 @@
-
 enum MyPins {
 	//% block=P0
 	P0 = DigitalPin.P0
