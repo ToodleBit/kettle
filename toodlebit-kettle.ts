@@ -167,7 +167,7 @@ showColor(rgb: MyNeoPixelColors) {
     export function create(pin: DigitalPin): Light {
         let KettleLight = new Light();
         let stride =  NeoPixelMode.RGBW ? 4 : 3;
-        KettleLight.buf = pins.createBuffer(20 * stride);
+        KettleLight.buf = pins.createBuffer(24 * stride);
         KettleLight.start = 0;
         KettleLight._length = 24;
         KettleLight._mode = NeoPixelMode.RGB;
